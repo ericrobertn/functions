@@ -1,0 +1,17 @@
+function filenotpresent { 
+
+[String]$File = "\\$VM_name\c$\MININIT\Scripts\LTICleanup.wsf"
+                
+$RetryCount = 0; $Completed = $false
+
+while (-not $Completed) {
+    if (Test-Path -LiteralPath $File) {
+    Write-Verbose "File found, retrying in 20 seconds."
+            Start-Sleep '20'
+            $RetryCount++
+      
+        } else {
+            Write-Verbose "File Not Found. Continuing."
+              $Completed = $true
+        }
+        }}
